@@ -1,0 +1,25 @@
+{
+  "name": "mp",
+  "version": "1.1.0",
+  "description": "Connect external OpenAI-compatible and Anthropic-compatible LLM providers (CLIProxyAPI/CPA, OpenRouter, OpenAI, Gemini, DeepSeek, Groq, LiteLLM, Ollama) with sticky zero-Claude-token /mp:use session routing, a built-in LLM Providers & Model Catalog UI, subagents, slash commands, and optional local gateway.",
+  "author": {
+    "name": "lengoc-me",
+    "url": "https://github.com/lengoc-me"
+  },
+  "homepage": "https://github.com/lengoc-me/claude-multi-provider",
+  "repository": "https://github.com/lengoc-me/claude-multi-provider",
+  "license": "Elastic-2.0",
+  "icon": ".claude-plugin/icon.png",
+  "keywords": [
+    "multi-provider",
+    "llm-gateway",
+    "cliproxyapi",
+    "openrouter",
+    "openai",
+    "gemini",
+    "deepseek",
+    "ollama",
+    "litellm",
+    "mcp"
+  ]
+}

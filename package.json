@@ -1,0 +1,67 @@
+{
+  "name": "claude-multi-provider",
+  "version": "1.1.0",
+  "description": "Official-compatible Claude Plugin & Desktop Extension (.mcpb) for routing sticky /mp:use sessions (0 Claude tokens), subagents, slash commands, MCP tools, and CLI sessions to external LLM providers (CLIProxyAPI/CPA, OpenRouter, OpenAI, Gemini, DeepSeek, Groq, LiteLLM, Ollama) with a built-in LLM Providers & Model Catalog UI.",
+  "type": "module",
+  "license": "Elastic-2.0",
+  "author": "lengoc-me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lengoc-me/claude-multi-provider.git"
+  },
+  "homepage": "https://github.com/lengoc-me/claude-multi-provider#readme",
+  "bugs": {
+    "url": "https://github.com/lengoc-me/claude-multi-provider/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-desktop",
+    "claude-plugin",
+    "mcp",
+    "mcpb",
+    "multi-provider",
+    "cliproxyapi",
+    "openrouter",
+    "openai",
+    "gemini",
+    "deepseek",
+    "ollama",
+    "litellm",
+    "llm-gateway"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "claude-multi-provider": "./bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "scripts/",
+    "commands/",
+    "hooks/",
+    "agents/",
+    "skills/",
+    "assets/icon.svg",
+    "assets/icon.png",
+    ".claude-plugin/",
+    ".mcp.json",
+    "manifest.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "start": "node ./src/mcp-server.mjs",
+    "dashboard": "node ./bin/cli.mjs dashboard",
+    "gateway": "node ./bin/cli.mjs gateway",
+    "install:desktop": "node ./bin/cli.mjs install-desktop",
+    "pack:mcpb": "node ./scripts/pack-mcpb.mjs",
+    "assets:generate": "node ./scripts/generate-visual-assets.mjs",
+    "security:audit": "node ./scripts/security-audit.mjs",
+    "test": "node --test ./tests/unit/*.test.mjs ./tests/e2e/*.test.mjs",
+    "test:scorecard": "node ./tests/e2e/run-scorecard.mjs"
+  }
+}

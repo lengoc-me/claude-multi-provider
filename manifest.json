@@ -1,0 +1,97 @@
+{
+  "manifest_version": "0.3",
+  "name": "mp",
+  "display_name": "Multi-Provider LLM Gateway",
+  "icon": ".claude-plugin/icon.png",
+  "version": "1.1.0",
+  "description": "Use external OpenAI-compatible and Anthropic-compatible LLM providers (CLIProxyAPI/CPA, OpenRouter, OpenAI, Gemini, DeepSeek, Groq, LiteLLM, Ollama) inside official Claude Desktop & Claude Code with a full LLM Providers & Model Catalog UI.",
+  "author": {
+    "name": "lengoc-me",
+    "url": "https://github.com/lengoc-me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lengoc-me/claude-multi-provider.git"
+  },
+  "homepage": "https://github.com/lengoc-me/claude-multi-provider",
+  "license": "Elastic-2.0",
+  "server": {
+    "type": "node",
+    "entry_point": "src/mcp-server.mjs",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/src/mcp-server.mjs"
+      ],
+      "env": {
+        "CMP_PROVIDER_NAME": "${user_config.provider_name}",
+        "CMP_PROVIDER_BASE_URL": "${user_config.provider_base_url}",
+        "CMP_PROVIDER_API_KEY": "${user_config.provider_api_key}",
+        "CMP_PROVIDER_PROTOCOL": "${user_config.provider_protocol}",
+        "CMP_DEFAULT_MODEL": "${user_config.default_model}",
+        "CMP_DASHBOARD_PORT": "${user_config.dashboard_port}",
+        "CMP_GATEWAY_PORT": "${user_config.gateway_port}"
+      }
+    }
+  },
+  "user_config": {
+    "provider_name": {
+      "type": "string",
+      "title": "Primary Provider Name",
+      "description": "Display label for your initial provider.",
+      "default": "Primary Gateway",
+      "required": false
+    },
+    "provider_base_url": {
+      "type": "string",
+      "title": "Provider Base URL",
+      "description": "e.g. http://localhost:8317, https://openrouter.ai/api/v1, or http://localhost:11434/v1",
+      "default": "",
+      "required": false
+    },
+    "provider_api_key": {
+      "type": "string",
+      "title": "Provider API Key",
+      "description": "Stored in your OS keychain (optional for local Ollama).",
+      "sensitive": true,
+      "required": false
+    },
+    "provider_protocol": {
+      "type": "string",
+      "title": "Wire Protocol",
+      "description": "auto | openai | anthropic",
+      "default": "auto",
+      "required": false
+    },
+    "default_model": {
+      "type": "string",
+      "title": "Default Model ID",
+      "description": "Default external model ID for mp_chat.",
+      "default": "",
+      "required": false
+    },
+    "dashboard_port": {
+      "type": "number",
+      "title": "Settings Dashboard Port",
+      "description": "Loopback port for Settings Web UI.",
+      "default": 18320,
+      "required": false
+    },
+    "gateway_port": {
+      "type": "number",
+      "title": "Local Gateway Port",
+      "description": "Loopback port for Claude Code CLI routing.",
+      "default": 18329,
+      "required": false
+    }
+  },
+  "tools": [
+    { "name": "mp_list_models", "description": "List configured LLM providers and enabled/cached models." },
+    { "name": "mp_chat", "description": "Query any configured external LLM model." },
+    { "name": "mp_compare_models", "description": "Run 2-5 external models in parallel and compare outputs." },
+    { "name": "mp_fetch_catalog", "description": "Fetch /v1/models and /v1beta/models from providers." },
+    { "name": "mp_configure_provider", "description": "Add/update providers or enable catalog models." },
+    { "name": "mp_open_settings", "description": "Open the local LLM Providers & Model Catalog Web Dashboard." },
+    { "name": "mp_gateway_status", "description": "Start or inspect the local Anthropic-compatible Gateway." }
+  ]
+}

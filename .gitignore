@@ -1,0 +1,22 @@
+# Dependencies & OS
+node_modules/
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Local agent skill gate & private workspace state (never committed to public repo)
+.agents/
+.claude/settings.local.json
+
+# Secrets & local runtime configs
+.env
+.env.*
+*.pem
+*.key
+*.secret
+*.local.json
+
+# Ephemeral test data & build artifacts (uploaded via GitHub Releases)
+.tmp-test/
+coverage/
+dist/
